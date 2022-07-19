@@ -20,11 +20,21 @@ public class WorkerDAOImpl implements WorkersDAO {
     public List<Worker> getAllWorkers() {
 
         Session session = sessionFactory.getCurrentSession();
-        List<Worker> workerList =
-                session.createQuery("from Worker ", Worker.class)
-                        .getResultList();
-//        Query workerQuery = session.createQuery("from workers", Worker.class);
+        //        Query workerQuery = session.createQuery("from workers", Worker.class);
 //        List<Worker> workerList = workerQuery.getResultList();
-        return workerList;
+        return session.createQuery("from Worker ", Worker.class)
+                .getResultList();
+    }
+
+    @Override
+    public void saveWorker(Worker worker) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(worker);
+    }
+
+    @Override
+    public Worker getWorker(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Worker.class, id );
     }
 }

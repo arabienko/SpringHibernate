@@ -7,4 +7,6 @@ import java.util.List;
 public interface WorkersDAO {
 
     public List<Worker> getAllWorkers();
+    public void saveWorker(Worker worker);
+    public Worker getWorker(int id);
 }

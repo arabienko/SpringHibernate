@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+
 public class WorkerServiceImpl implements WorkerService {
 
     @Autowired
@@ -20,5 +21,17 @@ public class WorkerServiceImpl implements WorkerService {
     public List<Worker> getAllWorkers() {
         return workersDAO.getAllWorkers();
 
+    }
+
+    @Override
+    @Transactional
+    public void saveWorker(Worker worker) {
+        workersDAO.saveWorker(worker);
+    }
+
+    @Override
+    @Transactional
+    public Worker getWorker(int id) {
+        return workersDAO.getWorker(id);
     }
 }

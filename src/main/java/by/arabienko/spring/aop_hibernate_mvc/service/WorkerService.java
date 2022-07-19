@@ -8,5 +8,7 @@ import java.util.List;
 public interface WorkerService {
 
     public List<Worker> getAllWorkers();
+    public void saveWorker(Worker worker);
+    public Worker getWorker(int id);
 
 }

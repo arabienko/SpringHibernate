@@ -19,22 +19,28 @@ All workers!!!
 <th>SURNAME</th>
 <th>Department</th>
 <th>Salary</th>
+<th>Operations</th>
 </tr
 <c:forEach var= "worker" items = "${allWorkers}">
-
+<c:url var = "updateButton" value = "/updateInfo">
+<c:param name = "workerID" value = "${worker.id}"/>
+</c:url>
 <tr>
 <td>${worker.name}</td>
 <td>${worker.surname}</td>
 <td>${worker.department}</td>
 <td>${worker.salary}</td>
+<td>
+<input type = "button" value = "Update" onclick =" window.location.href = '${updateButton}'"
+</td>
 </tr>
 
 </c:forEach>
 <tr>
-
 </tr>
-
 </table>
+<br>
+<input type = "button" value = "Add new worker" onclick =" window.location.href = 'addWorker'"
 
 </body>
 </html>
