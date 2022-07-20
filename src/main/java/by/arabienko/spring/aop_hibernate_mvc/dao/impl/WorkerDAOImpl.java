@@ -4,9 +4,9 @@ import by.arabienko.spring.aop_hibernate_mvc.dao.WorkersDAO;
 import by.arabienko.spring.aop_hibernate_mvc.entity.Worker;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -35,6 +35,16 @@ public class WorkerDAOImpl implements WorkersDAO {
     @Override
     public Worker getWorker(int id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Worker.class, id );
+        return session.get(Worker.class, id);
+    }
+
+    @Override
+    public void deleteWorker(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Worker> workerQuery = session.createQuery("delete from Worker " +
+                "where id = :workerID");
+        workerQuery.setParameter("workerID", id);
+        workerQuery.executeUpdate();
+//        session.remove(session.get(Worker.class, id));
     }
 }

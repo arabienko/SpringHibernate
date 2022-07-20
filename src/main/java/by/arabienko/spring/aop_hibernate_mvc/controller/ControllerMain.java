@@ -44,4 +44,10 @@ public class ControllerMain {
         model.addAttribute("worker", workerService.getWorker(id));
         return "info-worker";
     }
+
+    @RequestMapping("/deleteWorker")
+    public String deleteWorker(@RequestParam("workerID") int id){
+        workerService.deleteWorker(id);
+        return "redirect:/";
+    }
 }

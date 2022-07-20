@@ -25,13 +25,17 @@ All workers!!!
 <c:url var = "updateButton" value = "/updateInfo">
 <c:param name = "workerID" value = "${worker.id}"/>
 </c:url>
+<c:url var = "deleteButton" value = "/deleteWorker">
+<c:param name = "workerID" value = "${worker.id}"/>
+</c:url>
 <tr>
 <td>${worker.name}</td>
 <td>${worker.surname}</td>
 <td>${worker.department}</td>
 <td>${worker.salary}</td>
 <td>
-<input type = "button" value = "Update" onclick =" window.location.href = '${updateButton}'"
+<input type = "button" value = "Update" onclick =" window.location.href = '${updateButton}'"/>
+<input type = "button" value = "Delete" onclick =" window.location.href = '${deleteButton}'"/>
 </td>
 </tr>
 
